@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital watch</title>
+    <style>
+        body {
+
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url(clock.jpg);
+            background-size: cover;
+        }
+
+        .container {
+            text-align: center;
+            border: 0px solid white;
+            padding: 0px 30px;
+            border-radius: 10px;
+            background-image: url(clock.jpg);
+            background-size: cover;
+            box-shadow: 0px 0px 10px 10px rgba(49, 105, 138, 0.5);
+        }
+
+        #digitalclock {
+            font-size: 48px;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 2px 2px 4px wheat;
+
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Digital Clock</h1>
+        <h1 id="digitalclock">00 :00 :00</h1>
+    </div>
+    <script>
+        function updateclock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+
+            hours = hours.toString().padStart(2, '0');
+
+            document.getElementById("digitalclock").textContent =
+                `${hours}:${minutes}:${seconds} ${ampm}`;
+        }
+
+        setInterval(updateclock, 1000);
+        updateclock();
+    </script>
+
+</body>
+
+</html>
